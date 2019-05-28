@@ -1,3 +1,6 @@
+#Antes de empezar
+Te harán falta alguna dependencias, deberías ejecutar `npm install`
+
 #Cómo funciona
 En la carpeta /src están los distintos ejercicios a realizar, cada uno identificado con el nombre de la carpeta <número>-<tema>. En la carpeta /tests están los tests para cada ejercicio.
 
