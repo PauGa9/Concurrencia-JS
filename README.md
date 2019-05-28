@@ -1,8 +1,8 @@
-#Antes de empezar
+# Antes de empezar
 Te harán falta alguna dependencias, deberías ejecutar `npm install`
 
-#Cómo funciona
-En la carpeta /src están los distintos ejercicios a realizar, cada uno identificado con el nombre de la carpeta <número>-<tema>. En la carpeta /tests están los tests para cada ejercicio.
+# Cómo funciona
+En la carpeta /src están los distintos ejercicios a realizar, cada uno identificado con el nombre de la carpeta \<número\>-\<tema\>. En la carpeta /tests están los tests para cada ejercicio.
 
 Importante:
 * Solo se deben modificar los ficheros de /src.
@@ -10,8 +10,8 @@ Importante:
 
 Para comprovar si el ejercicio están bien, hay que ejecutar:
 
-npm test <número_del_ejercicio> <solución_opcional>
+`npm test \<número_del_ejercicio\> \<solución_opcional\>`
 
-#Alias para docker
+# Alias para docker
 
-alias t='docker run --rm -it -v $(pwd):/var/www -w /var/www node:8-alpine npm test'
+> alias t='docker run --rm -it -v $(pwd):/var/www -w /var/www node:8-alpine npm test'
