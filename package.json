@@ -1,0 +1,17 @@
+{
+  "name": "concurrencia_js",
+  "version": "1.0.0",
+  "description": "Workshop sobre concurrencia en JS",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index"
+  },
+  "author": "Pau Gasol Anton",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
+}
