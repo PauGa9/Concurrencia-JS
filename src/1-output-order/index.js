@@ -1,17 +1,17 @@
 const consoleOrder = () => {
-    setTimeout(() => console.log(1), 0)
-    console.log(add2(0))
+    console.log(add1(0))
+    setTimeout(() => console.log(2), 0)
+    console.log(add1(2))
     const interval = setInterval(() => {
-        console.log(add(1))
+        console.log(add1(3))
         setTimeout(() => {
-            console.log(4)
+            console.log(5)
         }, 500);
-
     }, 1000)
-    setTimeout(() => {clearInterval(interval); console.log(5)}, 1100)
-    console.log(6)
+    setTimeout(() => {clearInterval(interval); console.log(6)}, 1100)
+    console.log(7)
 }
 
-const add2 = x => x + 2
+const add1 = x => x + 1
 
 module.exports.default = consoleOrder

@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 
 module.exports.test = (exercice) => (rawSolution, hasToShowSolution) => {
-    const result = [2, 6, 1, 3, 5, 4]
+    const result = []
     const log = console.log
     const solution = rawSolution.length == 1 ? rawSolution[0].split(',').map(item => item.trim()) : rawSolution
     const checkMessage = hasToShowSolution ? 
@@ -10,7 +10,7 @@ module.exports.test = (exercice) => (rawSolution, hasToShowSolution) => {
     
     new Promise((resolve) => {
         console.log(chalk.blue('Según entiendo, tu respuesta es ') + chalk.bold.blue(solution.join(' ')))
-        console.log = () => {}
+        console.log = (value) => {result.push(value)}
         exercice()
         setTimeout(resolve, 2000)
     })
