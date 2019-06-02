@@ -1,12 +1,11 @@
 const chalk = require('chalk')
+const rawSolution = process.argv.slice(3)
 
-module.exports.test = (exercice) => (rawSolution, hasToShowSolution) => {
+const test = (exercice) => {
     const result = []
     const log = console.log
     const solution = rawSolution.length == 1 ? rawSolution[0].split(',').map(item => item.trim()) : rawSolution
-    const checkMessage = hasToShowSolution ? 
-        chalk.red('Lo siento, pero no es correcto! ') + 'La respuesta correcta es ' + chalk.bold(result.join(' ')): 
-        chalk.red('Lo siento, pero no es correcto! ') + 'Si quieres ver la solución, ejecuta el comando ' + chalk.bold.italic('npm test <nombre-test> -s <solución>');
+    const checkMessage = chalk.red('Lo siento, pero no es correcto!')
     
     new Promise((resolve) => {
         console.log(chalk.blue('Según entiendo, tu respuesta es ') + chalk.bold.blue(solution.join(' ')))
@@ -30,3 +29,5 @@ module.exports.test = (exercice) => (rawSolution, hasToShowSolution) => {
     })
     .catch(error => console.log('Se ha producido un error: ' + error.message))
 }
+
+module.exports = test
