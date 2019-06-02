@@ -1,7 +1,7 @@
 const consoleOrder = () => {
     console.log(add1(0))
     setTimeout(() => console.log(2), 0)
-    console.log(add1(2))
+    console.log(3)
     const interval = setInterval(() => {
         console.log(add1(3))
         setTimeout(() => {
