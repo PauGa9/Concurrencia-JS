@@ -9,12 +9,12 @@ La lógica del controller es:
 
 1. Llamar a un servicio de OAuth, pasándole nombre de usuario y password (estos dos parámetros los tendremos en `request.body.username` y `request.body.password`).
 
-2. Si el usuario existe, el servicio de OAuth nos devuelve un token para la sesión del usuario. Devolvemos la respuesta http con `{token: <valor_token>}`.
+2. Si el usuario existe, el servicio de Auth nos devuelve un token para la sesión del usuario. Devolvemos la respuesta http con `{token: <valor_token>}`.
 
 3. En caso de que el usuario no exista o la combinación `username`-`password` sea incorrecta, nos devolverá un error. Devolvemos la respuesta http con `{error: "Usuario y/o contraseña incorrecto"}`.
 
 Para la autenticación, disponemos del siguiente módulo JS:
-- `require('./src/auth).authenticate(userId: string, password: string, callback: (error, token) => void)`
+- `require('./src/services/auth).authenticate(userId: string, password: string, callback: (error, token) => void)`
 
 Se trata de una función asíncrona, que ejecutará el parámetro `callback` cuando haya finalizado. El error contendrá el mensaje `wrong` si el usuario no existe.
 
