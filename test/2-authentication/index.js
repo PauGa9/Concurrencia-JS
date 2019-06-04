@@ -1,14 +1,14 @@
 const chalk = require('chalk')
 const goodRequest = {
     body: {
-        username: 'admin',
+        userId: 'admin',
         password: '12345admin'
     }
 }
 
 const badRequest = {
     body: {
-        username: 'test',
+        userId: 'test',
         password: '12345admin'
     }
 }
@@ -25,7 +25,7 @@ module.exports = (exercice) => {
     executeExercice(exercice, goodRequest)
     // test correct path
     .then(data => {
-        test('Test callback call', spy, true, 'Debes utilizar llamar la función auth.authenticate, pasándole username, password y un callback')
+        test('Test callback call', spy, true, 'Debes utilizar llamar la función auth.authenticate, pasándole userId, password y un callback')
         test('Test correct path', data, {token: '1234asdf-56fg-789hjk'}, 'Con usuario y password correctos debes llamar el método response.json({token: <token>})')
     })
     // test wrong path
