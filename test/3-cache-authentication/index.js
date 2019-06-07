@@ -137,7 +137,7 @@ function testErrorInCacheGet(exercice) {
 
     return test(exercice, goodRequest)
         .then(data => {
-            assertEqual(data, {error: 'Error en cache'}, 'Cuando cache.get devuelve error, debes finalizar la petición http con response.json({error: "Error en cache"})')
+            assertEqual(data, {error: 'Uuups'}, 'Cuando cache.get devuelve error, debes finalizar la petición http con response.json({error: "Uuups"})')
             assertEqual(spyCalls['auth'], 0, 'Cuando cache.get devuelve error, no deberías llamar auth.authenticate')
         })
 }
@@ -150,7 +150,7 @@ function testErrorInAuth(exercice) {
 
     return test(exercice, goodRequest)
         .then(data => {
-            assertEqual(data, {error: 'Usuario y/o contraseña incorrecto'}, 'Cuando usuario y/o contraseña son incorrectos, debes finalizar la petición http con response.json({error: "Usuario y/o contraseña incorrecto"})')
+            assertEqual(data, {error: 'Uuups'}, 'Cuando usuario y/o contraseña son incorrectos, debes finalizar la petición http con response.json({error: "Uuups"})')
             assertEqual(spyCalls['cache.set'], 0, 'Cuando usuario y/o contraseña son incorrectos, no deberías llamar cache.set')
         })
 }
@@ -163,7 +163,7 @@ function testErrorInCacheSet(exercice) {
 
     return test(exercice, goodRequest)
         .then(data => {
-            assertEqual(data, {error: 'Error en cache'}, 'Cuando cache.set devuelve un error, debes finalizar la petición http con response.json({error: "Error en cache"})')
+            assertEqual(data, {error: 'Uuups'}, 'Cuando cache.set devuelve un error, debes finalizar la petición http con response.json({error: "Uuups"})')
         })
 }
 
@@ -213,4 +213,4 @@ function assertionMessage(message, ok) {
     return chalk.green('    ok ') + chalk.white(' ' + message)
 }
 
-const aa = 'Y2FjaGUuZ2V0KHVzZXJuYW1lLCAoZXJyb3IsIHRva2VuKSA9PiB7CiAgICBpZiAoZXJyb3IpIHsKICAgICAgICByZXNwb25zZS5qc29uKHtlcnJvcjogJ0Vycm9yIGVuIGNhY2hlJ30pCiAgICAgICAgcmV0dXJuCiAgICB9CiAgICBpZiAodG9rZW4pIHsKICAgICAgICByZXNwb25zZS5qc29uKHt0b2tlbjogdG9rZW59KQogICAgICAgIHJldHVybgogICAgfQogICAgYXV0aC5hdXRoZW50aWNhdGUodXNlcm5hbWUsIHBhc3N3b3JkLCAoZXJyb3IsIHRva2VuKSA9PiB7CiAgICAgICAgaWYgKGVycm9yKSB7CiAgICAgICAgICAgIHJlc3BvbnNlLmpzb24oe2Vycm9yOiAnVXN1YXJpbyB5L28gY29udHJhc2XDsWEgaW5jb3JyZWN0byd9KQogICAgICAgICAgICByZXR1cm4KICAgICAgICB9CiAgICAgICAgY2FjaGUuc2V0KHVzZXJuYW1lLCB0b2tlbiwgKGVycm9yLCBpbnNlcnRpb25zKSA9PiB7CiAgICAgICAgICAgIGlmIChlcnJvcikgewogICAgICAgICAgICAgICAgcmVzcG9uc2UuanNvbih7ZXJyb3I6ICdFcnJvciBlbiBjYWNoZSd9KQogICAgICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgICAgIH0KICAgICAgICAgICAgcmVzcG9uc2UuanNvbih7dG9rZW46ICcxMjM0YXNkZi01NmZnLTc4OWhqayd9KQogICAgICAgIH0pCiAgICB9KQp9KQ=='
+const aa = 'Y2FjaGUuZ2V0KHVzZXJJZCwgKGVycm9yLCB0b2tlbikgPT4gewogICAgICAgIGlmIChlcnJvcikgewogICAgICAgICAgICByZXNwb25zZS5qc29uKHtlcnJvcjogJ1V1dXBzJ30pCiAgICAgICAgICAgIHJldHVybgogICAgICAgIH0KICAgICAgICBpZiAodG9rZW4pIHsKICAgICAgICAgICAgcmVzcG9uc2UuanNvbih7dG9rZW46IHRva2VufSkKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgfQogICAgICAgIGF1dGguYXV0aGVudGljYXRlKHVzZXJJZCwgcGFzc3dvcmQsIChlcnJvciwgdG9rZW4pID0+IHsKICAgICAgICAgICAgaWYgKGVycm9yKSB7CiAgICAgICAgICAgICAgICByZXNwb25zZS5qc29uKHtlcnJvcjogJ1V1dXBzJ30pCiAgICAgICAgICAgICAgICByZXR1cm4KICAgICAgICAgICAgfQogICAgICAgICAgICBjYWNoZS5zZXQodXNlcklkLCB0b2tlbiwgKGVycm9yLCBpbnNlcnRpb25zKSA9PiB7CiAgICAgICAgICAgICAgICBpZiAoZXJyb3IpIHsKICAgICAgICAgICAgICAgICAgICByZXNwb25zZS5qc29uKHtlcnJvcjogJ1V1dXBzJ30pCiAgICAgICAgICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICByZXNwb25zZS5qc29uKHt0b2tlbjogJzEyMzRhc2RmLTU2ZmctNzg5aGprJ30pCiAgICAgICAgICAgIH0pCiAgICAgICAgfSkKICAgIH0p'
