@@ -1,7 +1,8 @@
 # User authentication & Cache
-Ya tenemos el controller para autenticación, genial! Al siguiente sprint, nos llega una tarea para mejorar el tiempo de la autenticación: se debe cachear el token de usuario.
+Ya tenemos el controller para autenticación, genial! Al siguiente sprint, nos llega una tarea para mejorar el tiempo de la autenticación.
 
 ### Ejercicio
+Implementar el sistema de cache para el token de usuario.
 Deberemos modificar la lógica del controller. Puedes reutilizar el código del ejercicio 2 que consideres. La nueva lógica del controller es:
 
 1. Comprobar si tenemos guardado en cache el token del usuario. Usaremos una cache de tipo clave-valor, donde la clave será el valor de `userId` y el valor será el token. Deberemos llamar la función `cache.get(userId, callback)`.
