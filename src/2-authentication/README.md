@@ -2,9 +2,9 @@
 La siguiente historia del sprint es preparar un controller para una aplicación hecha con [Express](https://expressjs.com/). El objetivo del controller es realizar la autenticación del usuario y devolver un token para la sesión del usuario.
 
 ### Contexto: Express JS
-En la función se reciben dos argumentos:
+Un controller de Express se define como una función que tiene dos argumentos:
 
-1. El primero `request` simula la petición del usuario.
+1. El primero `request` contiene información sobre la petición http del cliente.
 2. El segundo `response` lo utilizaremos para devolver la respuesta llamando `response.json(jsonData)`.
 
 ### Ejercicio
@@ -17,8 +17,8 @@ El objetivo del controller es realizar la autenticación del usuario y devolver 
     * Se trata de una función asíncrona, que ejecutará el parámetro `callback` cuando haya finalizado. Si el usuario no existe nos devolverá `error` con el error; de lo contrario `error` será `null` y `token` contendrá el token de usuario.
 
 2. Preparar respuesta según haya funcionado autenticación.
-    * Si el usuario existe, el servicio de auth nos devuelve un token para la sesión del usuario. finalizamos la petición http llamando `response.json({token: <valor_token>})`.
-    * En caso de que el usuario no exista o la combinación `userId`-`password` sea incorrecta, nos devolverá un error. finalizamos la petición http llamando `response.json({error: "Usuario y/o contraseña incorrecto"})`.
+    * Si el usuario existe, el servicio de auth nos devuelve un token para la sesión del usuario. Finalizamos la petición http llamando `response.json({token: <valor_token>})`.
+    * En caso de que el usuario no exista o la combinación `userId`-`password` sea incorrecta, nos devolverá un error. Finalizamos la petición http llamando `response.json({error: "Usuario y/o contraseña incorrecto"})`.
 
 
 ### Ejecutar los tests
