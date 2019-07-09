@@ -73,7 +73,7 @@ function testCorrectPath(exercice) {
         fs.writeFile = writeFile
         return exercice()
     }).then(()=>{
-            assertEqual(spyWriteFile, 'The Brewery', 'que el array que le mandamos a writeFile tienen que estar filtrado')
+            assertEqual(spyWriteFile, 'The Brewery', 'El segundo parámetro de writeFile debe ser un string con los nombres de cervezerías de Buffalo')
         })
     .catch((error) => {
         if (error.message == ERROR_TIMEOUT) {
