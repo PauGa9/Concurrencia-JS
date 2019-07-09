@@ -68,11 +68,13 @@ function testCorrectPath(exercice) {
 
     return test(exercice)
     .then(() => {
-        assertEqual(spyWriteFile, 'The Brewery', 'El array que le mandamos a writeFile tienen que estar filtrado')
+
         axios.get = originalAxios
         fs.writeFile = writeFile
         return exercice()
-    })
+    }).then(()=>{
+            assertEqual(spyWriteFile, 'The Brewery', 'El segundo parámetro de writeFile debe ser un string con los nombres de cervezerías de Buffalo')
+        })
     .catch((error) => {
         if (error.message == ERROR_TIMEOUT) {
             console.log(koMessage('El test ha tardado demasiado. Asegúrate de devolver una promesa'))
