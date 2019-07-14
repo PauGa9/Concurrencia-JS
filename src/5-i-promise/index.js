@@ -4,5 +4,5 @@ const filePath = `${__dirname}/../../test.txt`
 const url = 'https://api.openbrewerydb.org/breweries?by_state=new_york'
 
 module.exports.default = function() {
-    /** Añade código aquí */
+  /** Añade código aquí */
 }
