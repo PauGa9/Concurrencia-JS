@@ -2,8 +2,8 @@ const testName = getTestName(process.argv[2])
 const args = process.argv.slice(3)
 
 try {
-    const exercice = require(`../src/${testName}`).default
     const test = require(`./${testName}`)
+    const exercice = require(`../src/${testName}`).default
     test(exercice)
 } catch (error) {
     console.error(error)
