@@ -9,15 +9,15 @@ Deberemos modificar la lógica del controller. Puedes reutilizar el código del 
 
     1.a. Si tenemos el token en cache, finalizamos la petición http llamando `response.json({token: <valor_token>})`.
 
-    1.b. Si se produce un error, finalizamos la petición http llamando `response.json({error: 'Uuups'})`
+    1.b. Si se produce un error, finalizamos la petición http llamando `response.json({error: "Error en cache"})`
 
 2. Si no existe en cache el token (el parámetro `value` será null), deberemos llamar al servicio de Auth, pasándole nombre de usuario y password (estos dos parámetros los tendremos en `request.body.userId` y `request.body.password`).
 
-    2.a. Si se produce un error al llamar al servicio de Auth (el usuario no existe), finalizamos la petición http llamando `response.json({error: 'Uuups'})`.
+    2.a. Si se produce un error al llamar al servicio de Auth (el usuario no existe), finalizamos la petición http llamando `response.json({error: "Usuario y/o contraseña incorrecto"})`.
 
 3. Si el usuario existe, el servicio de Auth nos devuelve un token para la sesión del usuario. Antes de finalizar la petición http deberemos guardar el token en la cache, llamando al método `cache.set(userId, token, callback)`.
 
-    3.a. Si se produce un error al llamar `cache.set`, debemos finalizar la petición http devolviendo el objeto `{error: 'Uuups'}`.
+    3.a. Si se produce un error al llamar `cache.set`, debemos finalizar la petición http devolviendo el objeto `{error: "Error en cache"}`.
 
     3.b. Si se persiste el token en cache correctamente, finalizamos la petición http llamando `response.json({token: <valor_token>})`.
 
