@@ -9,20 +9,21 @@ function name(name) {
     firstTest = false
 }
 
-function test(exercice) {
+function test(exercise) {
     return new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => reject(Error(ERROR_TIMEOUT)), 1500)
-        const result = exercice()
-        if (!result || !result.then) {
-            reject(Error(ERROR_NOT_PROMISE))
-            clearTimeout(timeout)
-            return
-        }
+        // const result = exercice()
+        const timeout = setTimeout(() => resolve('timeout'), 1500)
+        const exerciseResult = exercise()
+        assertEqual(exerciseResult instanceof Promise, true, 'La función debe devolver una Promsesa')
 
-        result
-            .then(resolve)
-            .catch(reject)
-            .then(() => clearTimeout(timeout))
+        if ((exerciseResult instanceof Promise)) {
+            exerciseResult.then((result) => {
+                resolve(result)
+                clearTimeout(timeout)
+            })
+        } else {
+            clearTimeout(timeout)
+        }
     })
 }
 
@@ -56,7 +57,11 @@ function testCorrectPath(exercice) {
     name('Test correct path')
     const axios = require('axios')
     const originalAxios = axios.get
-    axios.get = (url) => Promise.resolve({data: [{city: 'fake', name: 'fake'}, {city: 'Buffalo', name: 'The Brewery'}]})
+    let axiosSpy = 0
+    axios.get = (url) => {
+        axiosSpy++
+        return Promise.resolve({data: [{city: 'fake', name: 'fake'}, {city: 'Buffalo', name: 'The Brewery'}]})
+    }
 
     const fs = require('../../src/services/promiseFs')
     const writeFile = fs.writeFile
@@ -68,13 +73,13 @@ function testCorrectPath(exercice) {
 
     return test(exercice)
     .then(() => {
-
         axios.get = originalAxios
         fs.writeFile = writeFile
         return exercice()
     }).then(()=>{
-            assertEqual(spyWriteFile, 'The Brewery', 'El segundo parámetro de writeFile debe ser un string con los nombres de cervezerías de Buffalo')
-        })
+        assertEqual(axiosSpy, 1, 'La función debe llamar a axios.get(url)')
+        assertEqual(spyWriteFile, 'The Brewery', 'El segundo parámetro de writeFile debe ser un string con los nombres de cervezerías de Buffalo')
+    })
     .catch((error) => {
         if (error.message == ERROR_TIMEOUT) {
             console.log(koMessage('El test ha tardado demasiado. Asegúrate de devolver una promesa'))
